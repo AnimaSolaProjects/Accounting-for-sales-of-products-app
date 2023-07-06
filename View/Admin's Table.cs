@@ -20,11 +20,7 @@ namespace View
         
         private void AdminForm_Load(object sender, EventArgs e)
         {
-            MyContext.products.Load();
-            MyContext.grains.Load();
-
-            dataGridView1.DataSource = MyContext.products.Local.ToBindingList();
-            dataGridView2.DataSource = MyContext.grains.Local.ToBindingList();
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
