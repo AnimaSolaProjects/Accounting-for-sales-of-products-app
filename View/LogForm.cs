@@ -28,32 +28,48 @@ namespace View
 
         private void logonButton_Click(object sender, EventArgs e)
         {
-            Controller controller = new Controller();
-            if (controller.Login(LoginBox.Text, LoginBox.Text).LevelOfAccess != false)
+            string pass = "123456";
+            AdminForm adminForm = new AdminForm();
+            UserForm userForm = new UserForm();
+            if (AdminCheckBox.Checked != true)
             {
-                AdminForm adminForm = new AdminForm();
-                adminForm.ShowDialog();
-                this.Close();
+                if (LoginBox.Text == pass)
+                {
+                    adminForm.Show();
+                    this.Hide();
+                    
+                }
             }
             else
             {
-                MessageBox.Show("wrong data");
-                LoginBox.Clear();
-                PassBox.Clear();
+                userForm.Show();
+                this.Hide();
             }
         }
 
-        private void toRegistrform_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RegstrForm form = new RegstrForm();
-            form.Show();
-        }
-
+        
         private void LogForm_Leave(object sender, EventArgs e)
         {
-            LogForm form = new LogForm();
-            form.Close();
+            Application.Exit();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AdminCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AdminCheckBox.Checked == true) 
+            { 
+                LoginBox.Hide();
+                label2.Hide();
+            }
+            else
+            {
+                LoginBox.Show();
+                label2.Show();
+            }
         }
     }
 }
